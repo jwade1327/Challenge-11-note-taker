@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { notes } = require('../../db/db.json');
 const store = require('../../db/store');
 
 router.get('/notes', (req, res) => {
@@ -16,9 +15,9 @@ router.post('/notes', (req, res) => {
         .cath(err => res.status(400).json(err))
 });
 
-router.delete('/notes/:title', function (req, res) {
+router.delete('/notes/:id', function (req, res) {
     store
-        .deleteNotes(req.params.title)
+        .deleteNotes(req.params.id)
         .then(() => res.json({ ok: true }))
         .catch(err => res.status(400).json(err))
 });
