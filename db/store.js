@@ -32,19 +32,19 @@ class Store {
             return this.write(newNoteList);
         })
     };
-    deleteNotes(title) {
-        return this.getNotes()
-            .then(notes => {
-                console.log('this note says ' + title);
-                for (var i = 0; i < notes.length; i++) {
-                    notes.splice(i, 1);
-                    console.log(notes);
-                    break;
-                }
-            }
-            this.write(notes);
-        })
-    }
+    // deleteNotes(title) {
+    //     return this.getNotes()
+    //         .then(notes => {
+    //             console.log('this note says ' + title);
+    //             for (var i = 0; i < notes.length; i++) {
+    //                 notes.splice(i, 1);
+    //                 console.log(notes);
+    //                 break;
+    //             }
+    //         }
+    //         this.write(notes);
+    //     }
+    // };
 };
 
 const store = new Store();

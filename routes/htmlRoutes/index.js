@@ -9,4 +9,4 @@ router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-module.export = router;
+module.exports = router;
