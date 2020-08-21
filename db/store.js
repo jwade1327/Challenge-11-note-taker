@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const util = require('util');
 
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuid');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -32,7 +32,7 @@ class Store {
             error('please complete fields');
         }
 
-        const newNote = { title, text, id: uuidv1() };
+        const newNote = { title, text, id: uuid() };
         return this.getNotes()
             .then(notes => [...notes, newNote])
             .then(updatedNotes => this.write(updatedNotes))
