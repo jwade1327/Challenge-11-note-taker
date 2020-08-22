@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const util = require('util');
 
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -34,25 +34,12 @@ class Store {
             error('please complete fields');
         }
 
-        const newNote = { title, text, id: uuidv1() };
+        const newNote = { title, text, id: uuidv4() };
         return this.getNotes()
             .then(notes => [...notes, newNote])
             .then(updatedNotes => this.write(updatedNotes))
             .then(() => newNote);
     }
-    // deleteNotes(title) {
-    //     return this.getNotes()
-    //         .then(notes => {
-    //             console.log('this note says ' + title);
-    //             for (var i = 0; i < notes.length; i++) {
-    //                 notes.splice(i, 1);
-    //                 console.log(notes);
-    //                 break;
-    //             }
-    //         }
-    //         this.write(notes);
-    //     }
-    // };
 };
 
 module.exports = new Store();
